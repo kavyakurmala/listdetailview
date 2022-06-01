@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchoolList</title>
+    <style>
+        header{
+            text-align: center;
+            color: red;
+            background-color: aqua;
+        }
+        footer{
+            text-align: center;
+            color: red;
+            background-color: grey;
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+        div{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Django Web Development</h1>
+        <ul>
+            <li><a href="{% url 'app1:list' %}">Schools</a></li>
+        </ul>
+    </header>
+    <div>
+        <p><a href="{% url 'app1:update' pk=schoolDetails.pk %}">Update</a></p>
+        <p><a href="{% url 'app1:delete' pk=schoolDetails.pk %}">Delete</a></p>
+    </div>
+    <div>
+        <h1>School Information</h1>
+        <h2>School Name = {{schoolDetails.name}}</h2>
+        <h2>School Principal = {{schoolDetails.principal}}</h2>
+        <h2>Location = {{schoolDetails.loc}}</h2>
+        <h1>Students Information</h1>
+        {% for student in schoolDetails.students.all %}
+            <h3>{{student.name}}</h3>
+            <h3>{{student.age}}</h3>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <h1>Thanks for visiting</h1>
+    </footer>
+</body>
+</html>

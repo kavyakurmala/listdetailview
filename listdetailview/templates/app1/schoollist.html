@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchoolList</title>
+    <style>
+        header{
+            text-align: center;
+            color: red;
+            background-color: aqua;
+        }
+        footer{
+            text-align: center;
+            color: red;
+            background-color: grey;
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+        h2{
+            text-align: center;
+        }
+        ol li{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Django Web Development</h1>
+    </header>
+    <div>
+        <p><a href="{% url 'app1:create' %}">Insert</a></p>
+    </div>
+    <div>
+        <ol>
+            {% for school in schools %}
+                <h2><li><a href="{{school.id}}">{{school.name}}</a></li></h2>
+            {% endfor %}
+        </ol>
+    </div>
+    <footer>
+        <h1>Thanks for visiting</h1>
+    </footer>
+</body>
+</html>
